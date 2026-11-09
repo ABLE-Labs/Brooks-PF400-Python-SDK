@@ -1,0 +1,25 @@
+{
+  "master_speed": 20.0,
+  "profiles": {
+    "1": {
+      "speed": 10.0,
+      "speed2": 10.0,
+      "accel": 10.0,
+      "decel": 10.0,
+      "acc_ramp": 0.2,
+      "dec_ramp": 0.2,
+      "in_range": 0.0,
+      "straight": 0
+    },
+    "2": {
+      "speed": 5.0,
+      "speed2": 5.0,
+      "accel": 10.0,
+      "decel": 10.0,
+      "acc_ramp": 0.2,
+      "dec_ramp": 0.2,
+      "in_range": 0.0,
+      "straight": 0
+    }
+  }
+}

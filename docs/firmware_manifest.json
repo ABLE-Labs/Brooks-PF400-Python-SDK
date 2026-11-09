@@ -1,0 +1,1184 @@
+{
+  "firmware_project": "Tcp_cmd_server_ablelabs",
+  "version": "Command Server 3.0D4 10-25-2024",
+  "source_sha256": {
+    "Cmd.gpl": "1d85d92c876b450689254798321bba1136920206fc3d7dbbbcb711f648895c3b",
+    "Custom.gpl": "9000f6dd2e582fc84aa071dd8c7093d85dfca1f86b19f3b1bc8cb7a8398d30f5",
+    "Load_save.gpl": "0a4e3e1fabc63c167e2fcdf898caf36a8a492fe781711f088ac96020205225fe",
+    "PARobot.gpl": "34ffb598a12b652ece414dbc8066d784e29ef37ad0dc3daa594391c0a53365aa",
+    "PARobot_auto_center_intf.gpl": "25e2c520dfe04e271e6106705b0303919ff014f02cf730d785744eab2e26c2bf",
+    "StereoVision.gpl": "a67c6c24a8d839925e73b64ea1100d557afa62138676dc90d734ede406c7bfba"
+  },
+  "commands": [
+    {
+      "command": "Version",
+      "method": "version",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 301,
+      "firmware_comments": "Cmd_Version - Return the software version number\n\n  No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Nop",
+      "method": "nop",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 354,
+      "firmware_comments": "Cmd_Nop -- KDo nothing except return success.\n\n ABSTRACT:  Does nothing except return success.  Tests if the command\n      server is active and there are no pending errors.\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "SysState",
+      "method": "sys_state",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 367,
+      "firmware_comments": "Cmd_SysState -- Return the  status of controller (e-stop, power, execution)\n\n ABSTRACT:  Returns the value of DataID 234.  See the GPL documentation\n            for details on these values.\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Home",
+      "method": "home",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 582,
+      "firmware_comments": "Cmd_Home -- Homes the current robot.\n\n ABSTRACT:  Homes the current robot only.  Do not home any other robots.\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "HomeAll",
+      "method": "home_all",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 594,
+      "firmware_comments": "Cmd_HomeAll -- Homes all robots.\n\n ABSTRACT:  Homes all robots.\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Where",
+      "method": "where",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1415,
+      "firmware_comments": "Cmd_Where -- Gets the robot Cartesian and Angles location\n\n ABSTRACT:  Gets the robot Cartesian and Angles location\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "WhereC",
+      "method": "where_c",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1449,
+      "firmware_comments": "Cmd_WhereC -- Gets the robot Cartesian location\n\n ABSTRACT:  Gets the robot Cartesian location and config\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "WhereJ",
+      "method": "where_j",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1472,
+      "firmware_comments": "Cmd_WhereJ -- Gets the robot Angles location\n\n ABSTRACT:  Gets the robot Angles location\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "WaitForEom",
+      "method": "wait_for_eom",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1853,
+      "firmware_comments": "Cmd_WaitForEom -- Waits for the robot to reach the end of motion\n\n ABSTRACT:  Waits until the robot reaches the end of the current\n      motion or until the robot is stopped by some other means.\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "State",
+      "method": "state",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1996,
+      "firmware_comments": "Cmd_State -- Gets the robot motion state.\n\n ABSTRACT:  Gets the robot motion state.\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Halt",
+      "method": "halt",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 2020,
+      "firmware_comments": "Cmd_Halt -- Stops the robot motion immediately\n\n ABSTRACT:  Stops the robot motion immediately but leaves power on\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "MoveToSafe",
+      "method": "move_to_safe",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 524,
+      "firmware_comments": "Cmd_MoveToSafe -- Move robot to a safe postion\n\nABSTRACT: Command to Move a Robot to Safe Position\n          Function applicable only to\n          PF400/PF300/C3\n          PFDD4,PFC10/PFDD6,PFC8A\n          C5\n          Robots With a PreciseFlex\n          Servo or Pneumatic Gripper\n\n          This routine doesn't includes check for collision inside\n          Work volume of the robot and can be customized by user for their\n          workcell configuration\n\nNo parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "HomeAll_IfNoPlate",
+      "method": "home_all_if_no_plate",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 3575,
+      "firmware_comments": "Cmd_HomeAll_IfNoPlate -- Enable power and home if no plate\n\nABSTRACT: Command to test if the gripper is holding a plate.\n      If not, enable power and home all robots.\n\nNo parameters\n\n      Returns value -1 if no plate and command succeeded\n      Returns value 0 if a plate detected",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "IsFullyClosed",
+      "method": "is_fully_closed",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 3750,
+      "firmware_comments": "Cmd_IsFullyClosed -- Command to test if gripper is fully closed\n\nABSTRACT:  Command to test if the gripper is fully closed to its\n  lower hardstop by checking the end-of-travel sensor.  The end-of-travel\n  sensor signal is high if the spring gripper is within 2 mm of being\n  fully closed.\n\nNo parameters\n\nRETURNS:  \n  If Standard Gripper:\n          True (-1) If the gripper Is closed To within 2 mm of its fully\n              closed position\n          False (0) or error code and message.\n  If Dual Gripper\n          0, 1, 2, 3 = a bit mask where a bit set represents the \n              corresponding gripper being closed.\n              gripper 1 is bit 0\n              gripper 2 is bit 1",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "GetActiveGripper",
+      "method": "get_active_gripper",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 3893,
+      "firmware_comments": "",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Exit",
+      "method": "exit",
+      "signature": "",
+      "arguments": "()",
+      "counts": [
+        0
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 2275,
+      "firmware_comments": "Cmd_Exit -- Exit from this Telnet session\n\n ABSTRACT:  Issue a special reply that causes the caller to close the\n      Telnet session.  Has no effect on serial connections.\n\n No parameters",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Mode",
+      "method": "mode",
+      "signature": "value: float | None = None",
+      "arguments": "_params(value)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 326,
+      "firmware_comments": "Cmd_Mode - Get or Set the operation mode\n\nParameter 1: Optional. If omitted, returns the current mode.\n                       If specified, sets the mode:\n                          0 for normal mode,\n                          <> 0 for Telnet mode.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Attach",
+      "method": "attach",
+      "signature": "value: float | None = None",
+      "arguments": "_params(value)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 548,
+      "firmware_comments": "Cmd_Attach -- Attaches or releases the robot for control\n\n ABSTRACT:  Attaches or releases the robot for control by the client.\n\n      Or inquires about the current state of attachment.\n\n Parameter 1: Optional.\n              If omitted, this command returns the current attachment state.\n              If specified, 0 to release the robot, <> 0 to attach it.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "SelectRobot",
+      "method": "select_robot",
+      "signature": "robot_id: float | None = None",
+      "arguments": "_params(robot_id)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 732,
+      "firmware_comments": "Cmd_SelectRobot -- Sets or Gets the selected robot number.\n\n ABSTRACT:  Set or gets the number of the robot currently associated\n      with this thread.\n\n      The status thread select any robot or 0.\n\n      A robot thread may only select a robot that is not already selected\n      by a different robot thread.\n\n Parameter 1: Optional.\n              If omitted, this command returns the current robot number.\n              If specified, contains the robot number.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Mspeed",
+      "method": "mspeed",
+      "signature": "value: float | None = None",
+      "arguments": "_params(value)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 701,
+      "firmware_comments": "Cmd_Mspeed -- Sets or Gets the master robot speed factor\n\n ABSTRACT:  Set or gets the master system (monitor) speed factor.\n      This speed scales the speed of all robot motions.\n\n Parameter 1: Optional.\n              If omitted, this command returns the current system speed.\n              If specified, contains the new system speed as a percentage.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Payload",
+      "method": "payload",
+      "signature": "value: float | None = None",
+      "arguments": "_params(value)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1969,
+      "firmware_comments": "Cmd_Payload -- Sets or displays the payload for the current robot\n\n ABSTRACT:  Sets or displays the payload for the current robot\n\n      Does not go into effect until the next robot motion\n\n Parameter 1: Optional.\n              If omitted, this command returns the current payload value.\n              If specified, the payload percent value to be set.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "DestC",
+      "method": "dest_c",
+      "signature": "destination_only: float | None = None",
+      "arguments": "_params(destination_only)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 612,
+      "firmware_comments": "Cmd_DestC -- Gets the robot Cartesian destination\n\n ABSTRACT:  Gets the robot Cartesian destination + config\n\n Parameter 1: Optional.\n              If omitted, or zero, and the robot is not moving,\n              returns the Where value.\n\n              If specified, and value is 1, always returns the\n              Cartesian destination + config",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "DestJ",
+      "method": "dest_j",
+      "signature": "destination_only: float | None = None",
+      "arguments": "_params(destination_only)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 658,
+      "firmware_comments": "Cmd_DestJ -- Gets the robot Angles destination\n\n ABSTRACT:  Gets the robot Angles destination\n\n Parameter 1: Optional.\n              If omitted, or zero, and the robot is not moving,\n              returns the WhereJ value.\n\n              If specified, and value is 1, always returns the\n              robot angles destination",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "GripOpenPos",
+      "method": "grip_open_pos",
+      "signature": "width: float | None = None",
+      "arguments": "_params(width)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2121,
+      "firmware_comments": "Cmd_GripOpenPos -- Set and get the gripper open position\n\nABSTRACT: Command to Set & Get Gripper Open Position\n      Used only for Servo Gripper. For Pneumatics Gripper - Adjust Hardware\n\nParameter 1:  Optional.  If omitted, return the gripper open position.\n              If specified, the new value for the gripper open position",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "GripClosePos",
+      "method": "grip_close_pos",
+      "signature": "width: float | None = None",
+      "arguments": "_params(width)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2160,
+      "firmware_comments": "Cmd_GripClosePos -- Set and get the gripper close position\n\nABSTRACT: Command to Set & Get Gripper Close Position\n      Used only for Servo Gripper. For Pneumatics Gripper - Adjust Hardware\n\nParameter 1:  Optional.  If omitted, return the gripper close position.\n              If specified, the new value for the gripper close position",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Hp",
+      "method": "hp",
+      "signature": "value: int | None = None, wait: float | None = None",
+      "arguments": "_params(value, wait)",
+      "counts": [
+        0,
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 511,
+      "firmware_comments": "Cmd_Hp -- High Power control\n\n ABSTRACT:  Enable or disable high power\n\n            If no parameters, return the state of power.\n\n Parameter 1: 0 to disable power, 1 to enable power.\n Parameter 2: Optional if enabling power.\n              -1 means wait forever for power to come one.\n              0 or omitted means do not wait at all.\n              > 0 means wait for this many seconds.  An error is returned.\n              If power does not come one within this time.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Pd",
+      "method": "pd",
+      "signature": "parameter_id: int, index1: int | None = None, index2: int | None = None, index3: int | None = None",
+      "arguments": "_params(parameter_id, index1, index2, index3)",
+      "counts": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 395,
+      "firmware_comments": "Cmd_Pd -- Parameter Display\n\n ABSTRACT:  Return a parameter database value.\n\n Parameter 1: The paramemter ID code.\n Parameters 2-4:  Optional.  Correspond to the additional parameters\n                  of the GPL \"pd\" console command.  Assumed to be\n                  zero if omitted.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Pc",
+      "method": "pc",
+      "signature": "parameter_id: int, value: Scalar, *, indices: Sequence[int] | None = None",
+      "arguments": "(parameter_id, value) if indices is None else (parameter_id, *_vector(indices, (3,)), value)",
+      "counts": [
+        2,
+        5
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 437,
+      "firmware_comments": "Cmd_Pc -- Parameter Change\n\n ABSTRACT:  Change a parameter database value.\n\n      Accepts 2 or 5 parameters.\n\n      If 2 parameters are specified:\n\n              Parameter 1: The paramemter ID code.\n              Parameter 2: The new parameter value\n                           String values must be inside quotes.\n\n      If 5 parameters are specified:\n\n              Parameter 1: The paramemter ID code.\n              Parameters 2-4:  Correspond to the additional parameters\n                               of the GPL \"pc\" console command.\n              Parameter 5: The new parameter value\n                           String values must be inside quotes.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Speed",
+      "method": "speed",
+      "signature": "profile_index: int, value: float | None = None",
+      "arguments": "_params(profile_index, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 779,
+      "firmware_comments": "Cmd_Speed -- Sets or Gets the motion profile Speed.\n\n ABSTRACT:  Set or gets the Speed property for the specified\n      motion profile.\n\n Parameter 1: Specifies the profile index to use.\n\n Parameter 2: Optional.\n              If omitted, this command returns the profile Speed value.\n              If specified, contains the new profile Speed value.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Speed2",
+      "method": "speed2",
+      "signature": "profile_index: int, value: float | None = None",
+      "arguments": "_params(profile_index, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 820,
+      "firmware_comments": "Cmd_Speed2 -- Sets or Gets the motion profile Speed2.\n\n ABSTRACT:  Set or gets the Speed2 property for the specified\n      motion profile.\n\n Parameter 1: Specifies the profile index to use.\n\n Parameter 2: Optional.\n              If omitted, this command returns the profile Speed2 value.\n              If specified, contains the new profile Speed2 value.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Accel",
+      "method": "accel",
+      "signature": "profile_index: int, value: float | None = None",
+      "arguments": "_params(profile_index, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 860,
+      "firmware_comments": "Cmd_Accel -- Sets or Gets the motion profile accel.\n\n ABSTRACT:  Set or gets the Accel property for the specified motion\n      profile.\n\n Parameter 1: Specifies the profile index to use.\n\n Parameter 2: Optional.\n              If omitted, this command returns the profile accel.\n              If specified, contains the new profile accel.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Decel",
+      "method": "decel",
+      "signature": "profile_index: int, value: float | None = None",
+      "arguments": "_params(profile_index, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 900,
+      "firmware_comments": "Cmd_Decel -- Sets or Gets the motion profile decel.\n\n ABSTRACT:  Set or gets the Decel property for the specified motion\n      profile.\n\n Parameter 1: Specifies the profile index to use.\n\n Parameter 2: Optional.\n              If omitted, this command returns the profile decel.\n              If specified, contains the new profile decel.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "AccRamp",
+      "method": "acc_ramp",
+      "signature": "profile_index: int, value: float | None = None",
+      "arguments": "_params(profile_index, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 940,
+      "firmware_comments": "Cmd_AccRamp -- Sets or Gets the motion profile AccelRamp.\n\n ABSTRACT:  Set or gets the AccelRamp property for the specified\n      motion profile.\n\n Parameter 1: Specifies the profile index to use.\n\n Parameter 2: Optional.\n              If omitted, this command returns the profile AccelRamp.\n              If specified, contains the new profile AccelRamp.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "DecRamp",
+      "method": "dec_ramp",
+      "signature": "profile_index: int, value: float | None = None",
+      "arguments": "_params(profile_index, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 980,
+      "firmware_comments": "Cmd_DecRamp -- Sets or Gets the motion profile DecelRamp.\n\n ABSTRACT:  Set or gets the DecelRamp property for the specified\n      selected motion profile.\n\n Parameter 1: Specifies the profile index to use.\n\n Parameter 2: Optional.\n              If omitted, this command returns the profile DecelRamp.\n              If specified, contains the new profile DecelRamp.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "InRange",
+      "method": "in_range",
+      "signature": "profile_index: int, value: float | None = None",
+      "arguments": "_params(profile_index, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1020,
+      "firmware_comments": "Cmd_InRange -- Sets or Gets the motion profile InRange.\n\n ABSTRACT:  Set or gets the InRange property for the currently\n      selected motion profile.\n\n Parameter 1: Specifies the profile index to use.\n\n Parameter 2: Optional.\n              If omitted, this command returns the profile InRange.\n              If specified, contains the new profile InRange.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Straight",
+      "method": "straight",
+      "signature": "profile_index: int, value: float | None = None",
+      "arguments": "_params(profile_index, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1061,
+      "firmware_comments": "Cmd_Straight -- Sets or Gets the motion profile Straight.\n\n ABSTRACT:  Set or gets the Straight property for the specified\n      motion profile.\n\n Parameter 1: Specifies the profile index to use.\n\n Parameter 2: Optional.\n              If omitted, this command returns the profile Straight value.\n              If specified, contains the new profile Straight value.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Profile",
+      "method": "profile",
+      "signature": "profile_index: int, values: Sequence[float] | None = None",
+      "arguments": "(profile_index,) if values is None else (profile_index, *_vector(values, (8,)))",
+      "counts": [
+        1,
+        9
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1112,
+      "firmware_comments": "Cmd_Profile -- Sets or Gets the entry motion Profile.\n\n ABSTRACT:  Set or gets the specified Profile\n\n Parameter 1: Specifies the index of the profile for this robot.\n Parameter 2-9: Optional.\n              If omitted, this command returns specified Profile value.\n              If specified, these parameters contain the new Profile value.\n                  2: Speed\n                  3: Speed2\n                  4: Accel\n                  5: Decel\n                  6: AccelRamp\n                  7: DecelRamp\n                  8: InRange\n                  9: Straight",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Loc",
+      "method": "loc",
+      "signature": "index: int",
+      "arguments": "(index,)",
+      "counts": [
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1168,
+      "firmware_comments": "Cmd_Loc -- Gets the motion location Loc or Angles.\n\n ABSTRACT:  Gets the Cartesian position or Angles values for the\n      specified motion location.\n\n Parameter 1: Returns the currently selected motion location values.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "LocAngles",
+      "method": "loc_angles",
+      "signature": "index: int, joints: Sequence[float] | None = None",
+      "arguments": "(index,) if joints is None else (index, *_vector(joints, range(1,13)))",
+      "counts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1228,
+      "firmware_comments": "Cmd_LocAngles -- Gets or sets the motion location Angles.\n\n ABSTRACT:  Gets or sets the specified the specified location.\n\n      For Get, an error is returned if the specified location is\n      not of type \"Angles\".\n\n      For Set, the specified location is change to type \"Angles\".\n\n Parameter 1: The location index\n\n Parameter 2-13: Optional.\n              If omitted, this command returns specified location value.\n              If specified, these parameters contain the new location\n                  angles.\n              If the number of angles > the number of axes, the extra\n                  values are ignored.\n              If the number of angles < the number of axes, the missing\n                  values are assumed to be zero.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "LocXyz",
+      "method": "loc_xyz",
+      "signature": "index: int, pose: Sequence[float] | None = None",
+      "arguments": "(index,) if pose is None else (index, *_vector(pose, (6,)))",
+      "counts": [
+        1,
+        7
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1286,
+      "firmware_comments": "Cmd_LocXyz -- Gets or sets the motion location Cartesian values\n\n ABSTRACT:  Gets or sets the specified the specified location.\n\n      For Get, an error is returned if the specified location is\n      not of type \"Cartesian\".\n\n      For Set, the specified location is change to type \"Cartesian\".\n\n      Does not change the currently selected motion index.\n\n Parameter 1: The location index\n\n Parameter 2-7: Optional.\n              If omitted, this command returns specified location value.\n              If specified, these parameters contain the new location\n                  Cartesian values.  All values must be specified.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "LocZClearance",
+      "method": "loc_z_clearance",
+      "signature": "index: int, clearance: float | None = None, world: int | None = None",
+      "arguments": "_params(index, clearance, world)",
+      "counts": [
+        1,
+        2,
+        3
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1339,
+      "firmware_comments": "Cmd_LocZClearance -- Sets or Gets the motion location ZClearance.\n\n ABSTRACT:  Set or gets the ZClearance property for the specified\n      motion location.\n\n Parameter 1: The location index\n\n Parameter 2: Optional.\n              If omitted, this command returns the location ZClearance\n              and ZWorld values\n\n              If specified, contains the new location ZClearance value.\n\n Parameter 3: Optional.\n              If omitted or 0, the ZWorld value is set to False\n              If specified and non-zero, the ZWorld value is set to True",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "LocConfig",
+      "method": "loc_config",
+      "signature": "index: int, config: int | None = None",
+      "arguments": "_params(index, config)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1381,
+      "firmware_comments": "Cmd_LocConfig -- Sets or Gets the motion location configuration\n\n ABSTRACT:  Set or gets the configuration property for the specified\n      motion location.\n\n Parameter 1: The location index\n\n Parameter 2: Optional.\n              If omitted, this command returns the location config value.\n              If specified, contains the new location config value.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "HereJ",
+      "method": "here_j",
+      "signature": "index: int",
+      "arguments": "(index,)",
+      "counts": [
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1493,
+      "firmware_comments": "Cmd_HereJ -- Sets the specified robot location to the current Angles\n\n ABSTRACT:  Sets the specified robot location to the current Angles values.\n\n Parameter 1: The location index",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "HereC",
+      "method": "here_c",
+      "signature": "index: int",
+      "arguments": "(index,)",
+      "counts": [
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1525,
+      "firmware_comments": "Cmd_HereC -- Sets the specified robot location to the current Cartesian values\n\n ABSTRACT:  Sets the specified robot location to the current Cartesian values.\n\n Parameter 1: The location index",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "ReleaseBrake",
+      "method": "release_brake",
+      "signature": "axis: int",
+      "arguments": "(axis,)",
+      "counts": [
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1612,
+      "firmware_comments": "Cmd_ReleaseBrake -- Release the brake for a robot axis\n\n ABSTRACT:  Releases the brake for a robot axis.\n\n      Releases the brake immediately, without regard to the robot\n      servo state.  May cause the robot axis to fall if servos\n      are not active.\n\n Parameter 1: The number of the axis to release.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "SetBrake",
+      "method": "set_brake",
+      "signature": "axis: int",
+      "arguments": "(axis,)",
+      "counts": [
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1631,
+      "firmware_comments": "Cmd_SetBrake -- Set the brake for a robot axis\n\n ABSTRACT:  Sets the brake for a robot axis.\n\n      Sets the brake immediately, without regard to the robot\n      servo state.  May cause an error if the axis is moving.\n\n Parameter 1: The number of the axis to set.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Reset",
+      "method": "reset",
+      "signature": "thread_id: int",
+      "arguments": "(thread_id,)",
+      "counts": [
+        1
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 2065,
+      "firmware_comments": "Cmd_Reset -- Resets a robot thread\n\n ABSTRACT:  Resets a robot thread by stopping and starting it.\n\n Parameter 1: The number of the thread to reset, from 1 to n.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "ChangeConfig",
+      "method": "change_config",
+      "signature": "gripper_mode: int",
+      "arguments": "(gripper_mode,)",
+      "counts": [
+        1
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 666,
+      "firmware_comments": "Cmd_ChangeConfig -- Change robot configuration between right and lefty\n\nABSTRACT: Command to change Robot configuration between Righty and Lefty\n          Function applicable only to\n          PF400/PF300/C3\n          DD4/DD6\n          C10/C8A\n          C5\n          Robots With a PreciseFlex\n          Servo & Pneumatic Gripper\n\n          This routine doesn't includes check for collision inside\n          Work volume of the robot and can be customized by user for their\n          workcell configuration\n\nParameter 1:  The gripper mode.\n              0 to not change the gripper.\n              1 to open the gripper,\n              2 to close the gripper",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "ChangeConfig2",
+      "method": "change_config2",
+      "signature": "gripper_mode: int",
+      "arguments": "(gripper_mode,)",
+      "counts": [
+        1
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 874,
+      "firmware_comments": "Cmd_ChangeConfig2 -- Change robot configuration between right and lefty\n\nABSTRACT: Command to change Robot configuration between Righty and Lefty\n          Function applicable only to\n          PF400/PF300/C3\n          DD4/DD6\n          C10/C8A\n          C5\n          Robots With a PreciseFlex\n          Servo & Pneumatic Gripper\n\n          This routine doesn't includes check for collision inside\n          Work volume of the robot and can be customized by user for their\n          workcell configuration\n\n          Alternate routine does not move to safe location.\n          Attempts to minimize extra moves.\n\nParameter 1:  The gripper mode.\n              0 to not change the gripper.\n              1 to open the gripper,\n              2 to close the gripper",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Gripper",
+      "method": "gripper",
+      "signature": "action: int",
+      "arguments": "(action,)",
+      "counts": [
+        1
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 1990,
+      "firmware_comments": "Cmd_Gripper -- Open or close a gripper\n\nABSTRACT: Command to open or close Gripper.\n      Handles either a servoed electric gripper or a pnenumatic gripper.\nParameter 1: 1 - Open Gripper, 2 - Close Gripper",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "FreeMode",
+      "method": "free_mode",
+      "signature": "axis: int",
+      "arguments": "(axis,)",
+      "counts": [
+        1
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2048,
+      "firmware_comments": "Cmd_FreeMode -- Free selected axes\n\nABSTRACT: Command to Free all or one selected axis\n      The eGripper, if any, is usually axis 5.\n\n      Requires robot to be attached to enter free mode.\n\nParameter 1:  The axes selection to free.\n               Axis = 0                   Free all axes\n               Axis  = 1 to RobNumAxes    Free this axis only\n               Axis = -1                  Turn off Free mode for all axes",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "ZeroTorque",
+      "method": "zero_torque",
+      "signature": "enabled: int, axis_mask: int | None = None",
+      "arguments": "_params(enabled, axis_mask)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1582,
+      "firmware_comments": "Cmd_ZeroTorque -- Enable/Disable selected robot axes for zero torque mode\n\n ABSTRACT:  Enables or disables zero torque mode for a set of robot axes.\n      In this mode, the selected axes are set to torque mode with\n      a constant torque equal to the torque value sampled when this\n      command was issued.  The effect is to balance the axes against\n      any gravity loading.\n\n Parameter 1: 0 to disable zero torque mode for the entire robot.\n              1 to enable zero torque mode for the selected axes.\n Parameter 2: Required when enabling zero torque mode.\n              A bit mask with a bit set for each axes to be placed in\n              torque mode.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Base",
+      "method": "base",
+      "signature": "pose: Sequence[float] | None = None",
+      "arguments": "() if pose is None else _vector(pose, (4,))",
+      "counts": [
+        0,
+        4
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1651,
+      "firmware_comments": "Cmd_Base -- Sets or Gets the base transformation\n\n ABSTRACT:  Set or gets the BASE transformation for the current\n      robot.  Causes a break in any active robot motion.\n\n Parameter 1-4: Optional\n              If omitted, this command returns the base value.\n              If specified, parameters 1 through 4 contain the\n                  X, Y, Z and rotation-about-Z values.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Tool",
+      "method": "tool",
+      "signature": "pose: Sequence[float] | None = None",
+      "arguments": "() if pose is None else _vector(pose, (6,))",
+      "counts": [
+        0,
+        6
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1688,
+      "firmware_comments": "Cmd_Tool -- Sets or Gets the tool transformation\n\n ABSTRACT:  Set or gets the TOOL transformation for the current\n      robot.  Causes a break in any active robot motion.\n\n Parameter 1-6: Optional\n              If omitted, this command returns the tool value.\n              If specified, parameters 1 through 6 contain the\n                  X, Y, Z, yaw, pitch, roll values",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Move",
+      "method": "move",
+      "signature": "location_index: int, profile_index: int",
+      "arguments": "(location_index, profile_index)",
+      "counts": [
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1724,
+      "firmware_comments": "Cmd_Move -- Moves the robot\n\n ABSTRACT:  Moves the robot to one of the saved locations\n      using a saved profile.\n\n Parameter 1: The index of the destination location\n\n Parameter 2: The index of the profile to use.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "MoveAppro",
+      "method": "move_appro",
+      "signature": "location_index: int, profile_index: int",
+      "arguments": "(location_index, profile_index)",
+      "counts": [
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1758,
+      "firmware_comments": "Cmd_MoveAppro -- Moves the robot to approach a location\n\n ABSTRACT:  Moves the robot to approach one of the saved locations\n      using a saved profile.\n\n Parameter 1: The index of the destination location\n\n Parameter 2: The index of the profile to use.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "MoveExtraAxis",
+      "method": "move_extra_axis",
+      "signature": "position1: float, position2: float | None = None",
+      "arguments": "_params(position1, position2)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1795,
+      "firmware_comments": "Cmd_MoveExtraAxis -- Move an extra axis during the next motion\n\n ABSTRACT:  This command posts a move for the extra axes during\n      the next move to a Cartesian location.\n      Does not actually cause the robot to move.\n\n      Only some kinematic modules support extra axes.\n\n Parameter 1: The destination position for the 1st extra axis\n Parameter 2: Optional. The destination position for the 2nd extra axis.\n              If omitted, only the 1st axis is moved",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "MoveOneAxis",
+      "method": "move_one_axis",
+      "signature": "axis: int, position: float, profile_index: int",
+      "arguments": "(axis, position, profile_index)",
+      "counts": [
+        3
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1825,
+      "firmware_comments": "Cmd_MoveOneAxis -- Moves a single axis to the specified position.\n\n ABSTRACT:  Moves a single axis of the current robot.\n\n      Does not wait for the motion to complete\n\n Parameter 1: The number of the axis to move.\n\n Parameter 2: The destination position for the axis\n\n Parameter 3: The index of the profile to use.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "MoveJ",
+      "method": "move_j",
+      "signature": "profile_index: int, joints: Sequence[float]",
+      "arguments": "(profile_index, *_vector(joints, range(1,13)))",
+      "counts": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1882,
+      "firmware_comments": "Cmd_MoveJ -- Move to a location defined by angles.\n\n ABSTRACT:  Move to the location defined by angles using\n      the specified profile.\n\n      Does not change any location values.\n\n Parameter 1:   The index of the profile to use\n Parameters 2+: Up to 12 parameters\n              These parameters contain the location angles.\n              The number of parameters must equal or greater than\n              the number of axes.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "MoveC",
+      "method": "move_c",
+      "signature": "profile_index: int, pose: Sequence[float], config: int | None = None",
+      "arguments": "_params(profile_index, *_vector(pose, (6,)), config)",
+      "counts": [
+        7,
+        8
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 1928,
+      "firmware_comments": "Cmd_MoveC -- Move to a Cartesian location.\n\n ABSTRACT:  Move to the specified Cartesian location using the\n      specified profile index.\n\n Parameter 1:   The index of the profile to use\n Parameter 2-7\n              These parameters contain the new location Cartesian\n              coordinates:  X, Y, Z, y, p, r\n              All 6 parameters must be present\n\n Parameter 8  Optional configuration.  Assume 0 if omitted.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Sig",
+      "method": "sig",
+      "signature": "signal: int, value: int | None = None",
+      "arguments": "_params(signal, value)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "Cmd.gpl",
+      "source_line": 2036,
+      "firmware_comments": "Cmd_Sig -- Sets or Gets a digital signal\n\n ABSTRACT:  Set a digital signal or gets the current value.\n\n Parameter 1: The number of the signal to get or set.  If set, the\n              signal must be a digital output.\n Parameter 2: Optional\n              If omitted, this command returns the digital signal value.\n              If specified, contains the new digital signal value.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "LoadFile",
+      "method": "load_file",
+      "signature": "filename: str | None = None",
+      "arguments": "_params(filename)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Load_save.gpl",
+      "source_line": 57,
+      "firmware_comments": "Cmd_LoadFile -- Load a file containing locations and profiles\n\nABSTRACT: This command loads a named file into memory.\n\n      The locations and profiles contained in the file are loaded\n      into the current robot.\n\n      Any existing values are lost.\n\n Parameter 1: Optional - The name of the file to be loaded.\n              If not specified, the file Tcs.gpo is loaded.\n              If an extension is not specified, the default is .gpo",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "StoreFile",
+      "method": "store_file",
+      "signature": "filename: str | None = None",
+      "arguments": "_params(filename)",
+      "counts": [
+        0,
+        1
+      ],
+      "source_file": "Load_save.gpl",
+      "source_line": 101,
+      "firmware_comments": "Cmd_StoreFile -- Store the location and profiles data in a file\n\nABSTRACT: This command stores the named file by writing the\n      locations and profiles for the current robot to the file.\n\n Parameter 1: Optional - The name of the file.\n              If not specified, the file Tcs.gpo is used.\n              If an extension is not specified, the default is .gpo",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "PickPlate",
+      "method": "pick_plate",
+      "signature": "station_id: int, compliance: int | None = None, holding_torque_percent: float | None = None",
+      "arguments": "_params(station_id, compliance, holding_torque_percent)",
+      "counts": [
+        1,
+        2,
+        3
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 1172,
+      "firmware_comments": "Cmd_PickPlate -- Pick up a plate   %%%%BES NOT UPDATED%%%%\n\nABSTRACT: Command that goes to a nest position and picks up\n      a plate.  If the arm must change configuration, it automatically\n      goes through the Park position.\n\n      At the conclusion of this routine, the arm is left gripping the\n      plate and stopped at the nest approach position.\n\n      The pick position of the plate is obtained from the indicated station.\n      The ZClearance should be set to the distance required to withdraw the\n      gripper at the height of the plate pick up position.  The Config bits\n      must be set properly for the desired RIGHTY / LEFTY configuration.\n\n      If this operation is for a PF400 for stacks or hotels (STA_FL_VERT = 0),\n      an extra World Z motion lifts the grasped plate by z_above before the\n      depart motion is performed.\n\n      After the plate is grasped, z_grasp_offset is added to the ZClearance\n      to determine the depart location.\n\nParameter 1:  The pick station ID, from 1 to N\n\nParameter 2:  Optional.  If specified and value 1, enable horizontal\n              compliance during the gripper close operation.\n              Otherwise do not use compliance.\nParameter 3:  Optional.  The % of the orginal horizontal holding torque\n              to be applied during compliance, from 0 to 100.  If\n              omitted, 0 is assumed, resulting in no horizontal holding\n              torque.\n\nRETURNS:  True (-1) if a plate has been grasped (as determined by the final\n  gripper motor torque level) else False (0).",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "PlacePlate",
+      "method": "place_plate",
+      "signature": "station_id: int, compliance: int | None = None, holding_torque_percent: float | None = None",
+      "arguments": "_params(station_id, compliance, holding_torque_percent)",
+      "counts": [
+        1,
+        2,
+        3
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 1497,
+      "firmware_comments": "Cmd_PlacePlate -- Place a plate      %%%%BES NOT UPDATED%%%%\n\nABSTRACT: Command that goes to a nest position and places a\n      plate that is initially held in the gripper.  If the arm must\n      change configuration, it automatically goes through the Park position.\n\n      The place position of the plate is obtained from the indicated station.\n      The ZClearance should be set to the distance required to withdraw the\n      gripper at the height of the plate place position or the required\n      height above the place position with no part in hand.  The Config bits\n      must be set properly for the desired RIGHTY / LEFTY configuration.\n\n      The approach position is computed based upon sum of the ZClearance\n      property and an extra z_grasp_offset that accounts for the size of\n      part being held in the hand.\n\n      If this operation is for a PF400 for stacks or hotels (STA_FL_VERT = 0),\n      the approach position is positioned z_above distance higher in Z\n      than the place position.  And, an extra move to z_above the place\n      position is performed after the approach and before the move to the\n      final placement position.\n\n      At the conclusion of this routine, the arm is left with the gripper\n      open, not gripping a plate, and stopped at the nest approach\n      ZClearance position.\n\nParameter 1:  The place station ID, from 1 to n\n\nParameter 2:  Optional.  If specified and value 1, enable horizontal\n              compliance during the placment move.\n              Otherwise do not use compliance.\nParameter 3:  Optional.  The % of the orginal horizontal holding torque\n              to be applied during compliance, from 0 to 100.  If\n              omitted, 0 is assumed, resulting in no horizontal holding\n              torque.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "TeachPlate",
+      "method": "teach_plate",
+      "signature": "station_id: int, z_clearance: float | None = None",
+      "arguments": "_params(station_id, z_clearance)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 1795,
+      "firmware_comments": "Cmd_TeachPlate -- Teach a plate location\n\nABSTRACT: Command to teach a Plate Location for a PreciseFlex robot with\n          a Servo Gripper.  This routine assumes the robot is at the location\n          to be taught. Free Mode can be used to move the robot to the\n          desired position.\n\nParameter 1:  The station ID for the Plate location to be taught, \n              from 1 to n\n\nParameter 2:  Optional.  The ZClearance value in millimeters for this station\n              If omitted, the default value Z_CLEARANCE is used.\n\n              The ZClearance should be set to the distance required to\n              withdraw the gripper at the height of the\n              plate position.  The Config bits\n              must be set properly for the desired RIGHTY /\n              LEFTY configuration.\n              Station ID locations are Cartesian Type",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "MoveRail",
+      "method": "move_rail",
+      "signature": "station_id: int, mode: int | None = None, position: float | None = None",
+      "arguments": "_params(station_id, mode, position)",
+      "counts": [
+        1,
+        2,
+        3
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 1883,
+      "firmware_comments": "Cmd_MoveRail -- Move the linear rail axis\n\nABSTRACT: Command to move the linear rail axis to a station.\n      The move may occur immediately or during the next pick or place.\n\nParameter 1:  The destination station ID.\nParameter 2:  Optional.  The motion mode.\n              If omitted or zero, do not move the rail.\n                  Cancel any pending rail move.\n              1 = Move the rail immediately.\n              2 = Move the rail during the next pick or place.\nParameter 3:  Optional. If specified, move the rail axis to this\n              position instead of the station location.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Rail",
+      "method": "rail",
+      "signature": "station_id: int, position: float | None = None",
+      "arguments": "_params(station_id, position)",
+      "counts": [
+        1,
+        2
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 1942,
+      "firmware_comments": "Cmd_Rail -- Gets or sets the linear rail value\n\n ABSTRACT:  Gets or sets the specified the rail value for a station\n\n Parameter 1: The station index from 1 to n.\n\n Parameter 2: Optional.\n              If omitted, this command returns specified rail value.\n              If specified, this value becomes the new rail value.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "GraspData",
+      "method": "grasp_data",
+      "signature": "width: float | None = None, speed: float | None = None, force: float | None = None",
+      "arguments": "_params(width, speed, force)",
+      "counts": [
+        0,
+        3
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2208,
+      "firmware_comments": "Cmd_GraspData -- Set and get the grasp data\n\nABSTRACT: Command to Set & Get the grasp data used by PickPlate.\n      Used only for Servo Gripper. For Pneumatic Gripper - Adjust Hardware\n\nParameter 1:  Optional.  If omitted, return the parameter values\n              If specified, this is the new value for the plate width.\n              If specified, all remaining parameters must be specified.\n\nParameter 2:  Optional. If specified, the new value for the finger speed\n              during grasp, where 100 represents 100%.\n\nParameter 3:  Optional. If specified, the new value for the gripper\n              squeeze force, in Nt.  Positive values indicate that the\n              fingers must squeeze close to grasp the plate.  Negative\n              values indicate that the fingers must open to grasp.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "StationType",
+      "method": "station_type",
+      "signature": "station_id: int, access: int | None = None, pallet_type: int | None = None, z_clearance: float | None = None, z_above: float | None = None, z_grasp_offset: float | None = None",
+      "arguments": "_params(station_id, access, pallet_type, z_clearance, z_above, z_grasp_offset)",
+      "counts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2263,
+      "firmware_comments": "Cmd_StationType -- Set and get the station type\n\nABSTRACT: Command to Set & Get the station type and indexing type.\n\n      If parameters 2 - 5 are omitted, return the current types\n\nParameter 1: The station index from 1 to n.\n\nParameter 2: optional.  The station access code:\n             -1 = Do not change\n             0 = Horizontal access, from the side\n             1 = Vertical access, from the top\nParameter 3: optional.  The station pallet type\n             -1 = Do not change\n             0 = Normal, single location.\n             1 = Indexing pallet, 1,2,or 3 dimensional\nParameter 4: optional.  The Z-clearance value for this location\nParameter 5: optional.  The Z-above distance for robots using\n             horizontal access.\nParameter 6: optional.  The Z grasp offset applied when grasping\n             a part.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "PalletOrigin",
+      "method": "pallet_origin",
+      "signature": "station_id: int, pose: Sequence[float] | None = None, config: int | None = None",
+      "arguments": "_params(station_id, config) if pose is None else _params(station_id, *_vector(pose, (6,)), config)",
+      "counts": [
+        1,
+        7,
+        8
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2415,
+      "firmware_comments": "Cmd_PalletOrigin -- Gets or sets the pallet origin value\n\n ABSTRACT:  Gets or sets the specified the station pallet origin\n\n          If parameters 2-8 are omitted, returns the pallet origin info.\n\n          Until PalletX and PalletY are executed, the pallet is\n          assumed to be in the X-Y plane.\n\n Parameter 1:     The station index from 1 to n.\n\n Parameters 2-7:  Optional.  The world location of the pallet orgin.\n                  X Y Z yaw pitch roll\n                  Corresponds to pallet index 1,1,1\n\n Parameter 8:     Optional.  The configuration flags for this location\n                  Assumed to be 0 if not specified.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "PalletX",
+      "method": "pallet_x",
+      "signature": "station_id: int, count: int | None = None, xyz: Sequence[float] | None = None",
+      "arguments": "_params(station_id, count) if xyz is None else _params(station_id, count, *_vector(xyz, (3,)))",
+      "counts": [
+        1,
+        5
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2498,
+      "firmware_comments": "Cmd_PalletX -- Gets or sets the pallet X value\n\n ABSTRACT:  Gets or sets the specified the station pallet X direction,\n          count, and pitch for a 1, 2, or 3-dimensional pallet.\n          It must be called for all pallets.\n\n          PalletOrigin must be executed before this instruction.\n\n          If parameters 2-5 are omitted, returns the pallet X info.\n\n Parameter 1:     The station index from 1 to n.\n\n Parameter 2:     Optional.  The number of pallet index positions\n                  in the X direction.\n\n Parameters 3-5:  Optional.  The world location of maximum pallet\n                  position: X Y Z.\n                  Corresponds to pallet index n,1,1",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "PalletY",
+      "method": "pallet_y",
+      "signature": "station_id: int, count: int | None = None, xyz: Sequence[float] | None = None",
+      "arguments": "_params(station_id, count) if xyz is None else _params(station_id, count, *_vector(xyz, (3,)))",
+      "counts": [
+        1,
+        5
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2640,
+      "firmware_comments": "Cmd_PalletY -- Gets or sets the pallet Y value\n\n ABSTRACT:  Gets or sets the specified the station pallet Y direction,\n          count, and pitch for a 2 or 3-dimensional pallet.\n          It does not need to be called for 1-dimensional pallets.\n\n          It does not change the X direction of the pallet, only the\n          Y direction.\n\n          PalletOrigin and PalletX must be called before this instruction.\n\n          If parameters 2-5 are omitted, returns the pallet Y info.\n\n Parameter 1:     The station index from 1 to n.\n\n Parameter 2:     Optional.  The number of pallet index positions\n                  in the Y direction.\n\n Parameters 3-5:  Optional.  The world location of maximum pallet\n                  position: X Y Z.\n                  Corresponds to pallet index 1,n,1",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "PalletZ",
+      "method": "pallet_z",
+      "signature": "station_id: int, count: int | None = None, xyz: Sequence[float] | None = None",
+      "arguments": "_params(station_id, count) if xyz is None else _params(station_id, count, *_vector(xyz, (3,)))",
+      "counts": [
+        1,
+        5
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2772,
+      "firmware_comments": "Cmd_PalletZ -- Gets or sets the pallet Z value\n\n ABSTRACT:  Gets or sets the specified the station pallet Z count\n          and pitch for a 3-dimensional pallet.\n          It does not need to be called for 1 or 2-dimensional pallets.\n\n          It does not change the orientation of the pallet.\n          It only establishes the Z index pitch and count.\n\n          PalletOrigin, PalletX, and PalletZ must all be called\n          before this instruction.\n\n          If parameters 2-5 are omitted, returns the pallet Z info.\n\n Parameter 1:     The station index from 1 to n.\n\n Parameter 2:     Optional.  The number of pallet index positions\n                  in the Z direction.\n\n Parameters 3-5:  Optional.  The world location of maximum pallet\n                  position: X Y Z.\n                  Corresponds to pallet index 1,1,n",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "PalletIndex",
+      "method": "pallet_index",
+      "signature": "station_id: int, x: int | None = None, y: int | None = None, z: int | None = None",
+      "arguments": "_params(station_id, x, y, z)",
+      "counts": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 2875,
+      "firmware_comments": "Cmd_PalletIndex -- Gets or sets the pallet index value\n\n ABSTRACT:  Gets or sets the specified the station pallet index\n          positions.\n\n          If parameters 2-4 are omitted, returns current index values.\n\n Parameter 1:     The station index from 1 to n.\n\n Parameter 2-4:   Optional.  The X, Y, and Z index values, from 1 to n.\n                  If set to 0, the corresponding index is not changed.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "GraspPlate",
+      "method": "grasp_plate",
+      "signature": "width: float, speed: float, force: float",
+      "arguments": "(width, speed, force)",
+      "counts": [
+        3
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 3650,
+      "firmware_comments": "Cmd_GraspPlate - Command to grasp a plate with limited force\n\nABSTRACT:  This command grasps a plate of a specified width at the\n  defined speed and limits the maximum gripping force.  The width\n  should be accurate to within approximately a mm since this routine\n  closes the fingers narrower than this width.  The difference between\n  the width of the plate and the commanded gripper position generates\n  a position error that the PID servo loop converts into the gripping\n  force.\n\n  At the end of the gripping motion, the gripper motor torque is\n  tested to confirm that the grasping operation has been successful.\n\nParamter 1:           Width of the plate to be grasped in mm.  This\n                      dimension does not need to be exact but should\n                      be accurate to within a mm or so to ensure that\n                      this routine generates a sufficiently large\n                      gripping force.\n\nParameter 2:          Speed at which the fingers are to close where\n                      100 represents the 100% speed.\n\nParameter 3:          Maximum gripper squeeze force to be applied in\n                      Nt.  Positive numbers indicate that the gripper\n                      will be closed to grasp the plate.  Negative\n                      numbers indicate that the gripper will be\n                      opened.  Due to noise, friction, and variations\n                      in the gripper spring force, the actual maximum\n                      gripper force will have some variability.\n\nOUTPUTS:  None\n\nRETURNS:  True (-1) if a plate has been grasped (as determined by the final\n  gripper motor torque level) else False (0).",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "ReleasePlate",
+      "method": "release_plate",
+      "signature": "width: float, speed: float, in_range: float | None = None",
+      "arguments": "_params(width, speed, in_range)",
+      "counts": [
+        2,
+        3
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 3707,
+      "firmware_comments": "Cmd_ReleasePlate -- Command to release a plate after GraspPlate\n\nABSTRACT:  This command opens the gripper to a specified width and turns\n  off the restriction on the gripper's peak force.  The force limit\n  is not eliminated until the plate is released to avoid applying\n  an excessive force to the plate.  An independent thread cancels\n  the force limit to prevent blocking execution of the main thread.\n\nParameter 1           Distance in mm to which the fingers are to open.\n\nParameter 2           Speed at which the fingers are to open where\n                      100 represents the 100% speed.\n\nParameter 3           Optional. Standard InRange profile parameter for the motion\n                      to open the gripper.  Permits the caller to\n                      have this gripper open motion blended or not blended\n                      with the next motion.\n                      If not specified, the value 0 is assumed",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "SetActiveGripper",
+      "method": "set_active_gripper",
+      "signature": "gripper: int, spin: int | None = None, profile_index: int | None = None",
+      "arguments": "_params(gripper, spin, profile_index)",
+      "counts": [
+        1,
+        3
+      ],
+      "source_file": "PARobot.gpl",
+      "source_line": 3794,
+      "firmware_comments": "",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "HeightDetect",
+      "method": "height_detect",
+      "signature": "quick_mode: int | None = None, search_limit: float | None = None, max_force: float | None = None",
+      "arguments": "_params(quick_mode, search_limit, max_force)",
+      "counts": [
+        0,
+        3
+      ],
+      "source_file": "PARobot_auto_center_intf.gpl",
+      "source_line": 102,
+      "firmware_comments": "Cmd_HeightDetect -- Command handler for executing HeightDetect function\n\nABSTRACT:  Executes the HeightDetect function that moves the gripper\n      down and detects the height of a stack of plates or the height of a\n      nest using motor force sensing.  Please see the documentation on\n      this function for complete information.\n\n      Given the complexity of this function, this command does not return\n      until the height detection operation has completed.\n\n      If no parameters are specified, they are all set to their default\n      values.\n\nINPUTS:\n\n Parameter 1: QuickMode - 1 for quick execution only and 2 for execution\n              of the thorough mode.  Set to 2 by default\n Parameter 2: rXSearchLimit -  Maximum distance that the gripper is\n              permitted to move down relative to the starting position,\n              in mm.  Set to -1E6 by default.\n Parameter 3: XMaxForce - Maximum vertical force to be applied when searching\n              for the stack height, in Nt.  Set to -15 by default.\n          \nOUPUTS:   If successful, returns the detected height in mm in absolute\n          robot coordinates.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "Custom",
+      "method": "custom",
+      "signature": "*values: float",
+      "arguments": "values",
+      "counts": null,
+      "source_file": "Custom.gpl",
+      "source_line": 101,
+      "firmware_comments": "Cmd_Custom -- Command handler for the \"Custom\" command\n\nINPUTS:   Cmd     An object of the class \"Command\" which contains the parsed\n                  command message from the remote client.\n\n                  See the Class Command definition in the Class_command.gpl.\n\n                      Cmd.Rob.RobNum  is the assigned robot number, or 0\n                                      if the status thread.\n                      Cmd.Rob.RobNumAxes is the number of axes for this robot.\n                      Cmd.sData(0)    is the command that invoked this routine\n                      Cmd.Nparm       is the number of parameters\n                      Cmd.sData(1...) are the parameter strings.\n                      Cmd.cData(1...) are the parameter numeric values after\n                                      StringToDouble is called.\n          \nOUPUTS:   Reply   The string sent to the client in response to this command.\n\n                  In normal mode, success is indicated a zero \"0\" as the\n                  first field and failure is indicated by a negative error\n                  code.\n\n                  In Telnet mode, which is intended to be read by humans,\n                  success is indicated by the string \"Ok\" and errors by\n                  an error message string.\n\n                  Arbitrary string data may be appended afterwards.\n\n                  The default value upon entry is \"0\" if normal mode\n                  and \"Ok\" if Telnet mode.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "ConvertJointToCartesian",
+      "method": "convert_joint_to_cartesian",
+      "signature": "joints: Sequence[float]",
+      "arguments": "_vector(joints, range(1,13))",
+      "counts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "source_file": "Custom.gpl",
+      "source_line": 134,
+      "firmware_comments": "ConvertJointToCartesian -- Convert joint values with the controller KineSol.\n\nParameters 1..N: Joint values. N must match the configured robot axes.\nReturns: X Y Z Yaw Pitch Roll Config.",
+      "verification": "mock TCP only; hardware not tested"
+    },
+    {
+      "command": "ConvertCartesianToJoint",
+      "method": "convert_cartesian_to_joint",
+      "signature": "pose: Sequence[float], config: int | None = None",
+      "arguments": "_params(*_vector(pose, (6,)), config)",
+      "counts": [
+        6,
+        7
+      ],
+      "source_file": "Custom.gpl",
+      "source_line": 173,
+      "firmware_comments": "ConvertCartesianToJoint -- Convert Cartesian values with the controller KineSol.\n\nParameters 1..6: X Y Z Yaw Pitch Roll.\nParameter 7: Optional Config. Defaults to 0.\nReturns: configured robot joint values.",
+      "verification": "mock TCP only; hardware not tested"
+    }
+  ],
+  "excluded_vision": [
+    "Vprocess",
+    "VresultLoc",
+    "VresultInfo",
+    "VresultInspect",
+    "VToolProperty",
+    "VresultInfoString",
+    "StereoParam",
+    "StereoLocate"
+  ]
+}

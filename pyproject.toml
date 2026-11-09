@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ablelabs-pf400-sdk"
+version = "0.1.0a1"
+description = "Python SDK for PF400 customer-delivery TCS firmware commands (vision excluded)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "ABLE Labs"}]
+dependencies = []
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.12", "build>=1.2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+license-files = ["THIRD_PARTY_NOTICES.md"]
+
+[tool.setuptools.package-data]
+pf400 = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/pf400/client.py" = ["F401"]
+"src/pf400/async_client.py" = ["F401"]

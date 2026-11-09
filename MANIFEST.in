@@ -1,0 +1,6 @@
+include README.md CHANGELOG.md THIRD_PARTY_NOTICES.md
+recursive-include docs *.md *.json
+recursive-include examples *.py *.md *.json
+recursive-include tools *.py
+recursive-include tests *.py
+include src/pf400/py.typed
