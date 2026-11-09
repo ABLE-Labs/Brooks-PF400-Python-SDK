@@ -1,4 +1,4 @@
-"""Python interface to the non-vision customer-delivery PF400 TCS commands."""
+"""Python interface to the non-vision Brooks PF400 TCP Command Server (TCS) commands."""
 
 from .async_client import AsyncPF400
 from .client import PF400

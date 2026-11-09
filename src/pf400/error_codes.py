@@ -1,8 +1,8 @@
-"""Selected controller errors and errors declared by customer TCS firmware.
+"""Selected controller errors and errors declared by the TCS firmware.
 
 Controller descriptions: Brooks Robot-Related Errors (checked 2026-11-09):
 https://www2.brooksautomation.com/Controller_Software/Software_Reference/GPL_Error_Code/robot_errors.htm
-TCS codes: Tcp_cmd_server_ablelabs/Globals.gpl and PARobot.gpl.
+TCS codes: firmware sources Globals.gpl and PARobot.gpl.
 This is not the complete manufacturer error catalog. Raw errors are always retained.
 """
 

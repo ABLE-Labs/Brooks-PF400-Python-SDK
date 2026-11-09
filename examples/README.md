@@ -32,19 +32,40 @@ examples/
 파일 직접 실행 시 SDK 루트를 등록하므로 실행 작업 디렉터리에 의존하지 않습니다.
 common과 config도 필요하므로 examples 전체 폴더 구조를 유지하세요.
 
+## 폴더별 안내
+
+각 폴더의 README에 파일별 설정, 동작 순서, 로봇 동작 여부가 정리되어 있습니다.
+
+| 폴더 | 내용 | 안내 |
+|---|---|---|
+| 01_connection | 연결·상태 | [한국어](01_connection/README.ko.md) · [English](01_connection/README.md) |
+| 02_power | 시작·종료 | [한국어](02_power/README.ko.md) · [English](02_power/README.md) |
+| 03_profiles | 프로파일 저장·적용·조회 | [한국어](03_profiles/README.ko.md) · [English](03_profiles/README.md) |
+| 04_joint_motion | 관절 이동 | [한국어](04_joint_motion/README.ko.md) · [English](04_joint_motion/README.md) |
+| 05_cartesian_motion | Cartesian 목표 이동 | [한국어](05_cartesian_motion/README.ko.md) · [English](05_cartesian_motion/README.md) |
+| 06_single_axis | 단일 축 이동 | [한국어](06_single_axis/README.ko.md) · [English](06_single_axis/README.md) |
+| 07_gripper | 그리퍼 조회·설정·개폐 | [한국어](07_gripper/README.ko.md) · [English](07_gripper/README.md) |
+| 08_gripper_force | 힘 제한 잡기·해제 | [한국어](08_gripper_force/README.ko.md) · [English](08_gripper_force/README.md) |
+| 09_controller_teaching | 컨트롤러 티칭 | [한국어](09_controller_teaching/README.ko.md) · [English](09_controller_teaching/README.md) |
+| 10_coordinate_conversion | 좌표 변환 | [한국어](10_coordinate_conversion/README.ko.md) · [English](10_coordinate_conversion/README.md) |
+| 11_stop | 정지 | [한국어](11_stop/README.ko.md) · [English](11_stop/README.md) |
+| 12_error_handling | 오류 처리 | [한국어](12_error_handling/README.ko.md) · [English](12_error_handling/README.md) |
+| 13_teaching_positions | PC 티칭 목록·저장·이동 | [한국어](13_teaching_positions/README.ko.md) · [English](13_teaching_positions/README.md) |
+| 14_free_mode | 수동 모드·복원 | [한국어](14_free_mode/README.ko.md) · [English](14_free_mode/README.md) |
+| async | 비동기 조회 | [한국어](async/README.ko.md) · [English](async/README.md) |
+| common | 공통 Python 모듈 | [한국어](common/README.ko.md) · [English](common/README.md) |
+| config | 프로파일·티칭 JSON | [한국어](config/README.ko.md) · [English](config/README.md) |
+
 ## 공통 파일
 
 - `config/motion_profiles.json`: PC에 영구 보관하는 MSpeed와 번호별 이동 프로파일.
 - `common/motion_profiles.py`: 설정 파일 검증·읽기·원자적 저장·장비 적용 함수.
 - `common/initialization.py`: 세션 설정과 제어 준비. 프로파일·MSpeed는 JSON에서 읽습니다.
-- `config/teaching_positions.json`: 기존에 저장한 이름별 관절 좌표. 이번 변경으로 갱신하지 않습니다.
+- `config/teaching_positions.json`: 이름별 관절 좌표. 기본 파일에는 저장된 위치가 없습니다.
 - `common/teaching_positions.py`: 티칭 JSON 읽기·저장 공통 함수.
 
 SDK와 **examples 폴더 전체를 같은 버전으로** 받으세요.
 wheel에는 예제가 없으며, sdist에는 공통 Python 파일·JSON·안내서가 함께 포함됩니다.
-기존의 `03_motion_profile.py`, `07_gripper.py`, `08_gripper_force.py`, `09_teaching.py`,
-`10_coordinate_conversion.py`, `13_teaching_positions.py`, `14_axis_free_mode.py`는
-아래 작업별 파일로 대체했습니다. 이전 복사본과 혼용하지 마세요.
 
 ## 실행할 파일 선택
 
@@ -97,7 +118,7 @@ open_gripper=True일 때만 Gripper 1
 
 일반 이동(04~06·13)은 그리퍼를 자동으로 열지 않습니다.
 그리퍼 축을 포함한 목표 관절 좌표를 입력하면 그 목표값에 따라 그리퍼가 움직일 수 있습니다.
-02 시작 예제의 원점 확인 후 그리퍼 열기는 기존 동작을 유지합니다.
+02 시작 예제는 원점 확인 후 그리퍼를 엽니다.
 07 개폐·08 잡기는 필요 시 Home을 수행하므로 현재 로봇 자세가 바뀔 수 있습니다.
 08 해제와 14 수동 모드는 자동 Home·개폐를 수행하지 않습니다.
 조회·좌표 저장·변환·정지·수동 모드 복원에는 공통 제어 초기화를 넣지 않습니다.
@@ -138,25 +159,23 @@ PC 저장과 장비 적용은 별도입니다. 장비에서 값을 바꿔도 PC 
 
 ### 전원 재인가 후
 
-제공된 TCS는 시작할 때 프로파일 객체를 기본값으로 만듭니다.
+지원 대상 TCS는 시작할 때 프로파일 객체를 기본값으로 만듭니다.
 PC JSON 파일은 전원 재인가와 무관하게 남지만, 장비에는 별도 복원 처리가 없다면 다시 적용해야 합니다.
 02 시작 및 제어 예제 초기화가 파일값을 다시 읽어 적용합니다.
 이는 컨트롤러 재부팅을 뜻하며 `Hp 0`/`Hp 1`로 구동 전원만 OFF/ON하는 것과 구분합니다.
 MSpeed(PDb 601)의 장비 내 유지 여부에도 의존하지 않고 초기화 시 함께 설정합니다.
 SDK의 단순 `connect()`나 조회 예제는 설정을 자동 복원하지 않습니다.
 
-### 기존 값에서 달라진 점
+### 기본값
 
-JSON의 초기값은 기존 공통 초기화의 프로파일 1·2(Ramp **0.2초**)와 MSpeed **20%**입니다.
-이전 03 예제만 갖고 있던 Ramp 10초 값은 기본값으로 사용하지 않습니다.
+JSON의 기본값은 프로파일 1·2(Ramp **0.2초**)와 MSpeed **20%**입니다.
 운전값을 바꾸려면 03 저장 예제 또는 JSON을 수정하세요. 모든 숫자는 실장비에서 검증해야 하는 예시값입니다.
-이제 03에서 저장한 값이 다음 예제의 하드코딩된 값으로 바뀌지 않습니다.
 
 ### 파라미터 의미와 단위
 
 | Python 변수 / TCS 명령 | 의미 | 단위·해석 | 근거 |
 |---|---|---|---|
-| `PROFILE_INDEX` / `Profile` 첫 인자 | 선택 로봇의 프로파일 슬롯 번호 | 단위 없음. 제공된 TCS는 1~20개 슬롯. 사용 전 공통 JSON에도 등록 필요 | [F] |
+| `PROFILE_INDEX` / `Profile` 첫 인자 | 선택 로봇의 프로파일 슬롯 번호 | 단위 없음. 지원 대상 TCS는 1~20개 슬롯. 사용 전 공통 JSON에도 등록 필요 | [F] |
 | `MASTER_SPEED` / `MSpeed` | 모든 로봇 이동 속도에 적용하는 시스템 배율 | %. `20`은 20%. 선택 프로파일 전용 설정이 아님 | [F] |
 | `SPEED` / `Speed` | 해당 이동의 최고 속도 지정 | 기준 속도 대비 %. `100`은 기준 속도. 직선 이동은 Cartesian 경로와 회전, 관절 보간은 관절 기준으로 적용 | [A], [B] |
 | `SPEED2` / `Speed2` | Cartesian 이동 중 일부 축의 보조 최고 속도 | 해당 축의 기준 속도 대비 %. GDE 예제는 `0`으로 보조 속도 지정을 무시. 두 번째 동작 단계의 속도가 아님 | [A], [E] |
@@ -188,7 +207,7 @@ JSON의 초기값은 기존 공통 초기화의 프로파일 1·2(Ramp **0.2초*
 ### 수치 해석과 결과 확인
 
 Speed2는 두 번째 이동 단계의 속도가 아닙니다. 공식 개요는 Cartesian 이동 중 일부 축의 보조 속도로
-정의하며, 이번에 확인한 자료에는 PF400의 구체적 적용 축이 없어 축 번호를 단정하지 않습니다.
+정의하며, 확인한 제조사 자료에는 PF400의 구체적 적용 축이 없어 축 번호를 단정하지 않습니다.
 Speed의 공식 최소는 0.01이고 최대는 로봇 구성에 따릅니다. 모든 필드의 허용 범위를 일괄 0~100으로 가정하지 않습니다.
 Ramp는 전체 가속/감속 시간이 아니며, 이동 거리와 컨트롤러 DB 설정에 따라 실제 적용 시간이 달라질 수 있습니다.
 MSpeed와 프로파일 속도를 설정해도 실제 mm/s는 이동 거리·가속·제한에 따라 달라집니다.
@@ -205,12 +224,12 @@ JSON 초기 슬롯 1의 예상 수치는 `[1, 10, 10, 10, 10, 0.2, 0.2, 0, 0]`�
 - [C] [Brooks GPL — Profile.AccelRamp](https://www2.brooksautomation.com/Controller_Software/Software_Reference/GPL_Dictionary/Profile_class/accelramp.htm): S-curve 시간, 0의 의미, DB 설정의 영향.
 - [D] [Brooks GPL — Profile.InRange](https://www2.brooksautomation.com/Controller_Software/Software_Reference/GPL_Dictionary/Profile_class/inrange.htm): 음수·0·양수·100 초과의 의미.
 - [E] [Brooks GDE, PN 609737 Rev. A, p.53](https://www.brooksautomation.com/getmedia/af66374f-fb72-49ae-bae6-28ec3106f0a4/GDE.pdf): 예제에서 Speed2=0을 보조 속도 무시로 설명.
-- [F] 제공된 제조사 `Tcp_cmd_server_ablelabs` 프로젝트: `Cmd.gpl`의 `Cmd_Mspeed`(PDb 601),
+- [F] PF400 TCS 펌웨어 소스: `Cmd.gpl`의 `Cmd_Mspeed`(PDb 601),
   `Cmd_Profile`(8개 인자와 조회 순서), `Cmd_Straight`(논리값 변환), `Globals.gpl`의 `N_PROF = 20`.
   SDK의 `docs/firmware_manifest.json`에 프로젝트 버전과 원본 해시가 있습니다.
 - [G] [Brooks GPL — Profile.Straight](https://www2.brooksautomation.com/Controller_Software/Software_Reference/GPL_Dictionary/Profile_class/straight.htm): Cartesian 직선/관절 보간 선택.
 
-제공된 펌웨어 소스와 현재 설치된 펌웨어의 동일성은 이번 문서 작업에서 확인하지 않았습니다.
+SDK 기준 펌웨어 소스와 실제 장비에 설치된 펌웨어가 같은지는 확인하지 않았습니다.
 
 
 ## 04~06. 이동
@@ -245,7 +264,7 @@ load의 `LOAD_FILE`은 store의 `SAVE_FILE`과 같은 컨트롤러 파일명으�
 해당 파일이 컨트롤러에 있어야 하며 불러온 위치·프로파일로 기존 메모리 값을 갱신합니다. Home·이동은 하지 않습니다.
 부팅 시 자동 실행되는 예제가 아니므로 필요한 시점에 직접 실행하세요.
 `09_locations_move.py`는 `LOAD_FILE`을 불러와 `LOCATION_INDEX` 슬롯으로 실제 이동합니다.
-`LOCATION_INDEX=None`은 실행 전 확인한 슬롯 번호로 바꾸세요. `PROFILE_INDEX`는 GPO의 프로파일 번호입니다.
+`LOCATION_INDEX`의 기본값은 `None`이므로 실행 전 확인한 슬롯 번호를 입력하세요. `PROFILE_INDEX`는 GPO의 프로파일 번호입니다.
 슬롯·프로파일 조회 후 수동 모드 해제, `MSPEED` 적용, 전원·Attach·필요 시 Home, `Move`·완료 대기를 수행합니다.
 PC 프로파일 JSON으로 덮어쓰지 않으며 그리퍼 개폐는 하지 않습니다. 이동 경로의 간섭은 자동 확인하지 않습니다.
 GPO는 컨트롤러 파일이고 PC의 프로파일 JSON·티칭 JSON과 별도입니다.
@@ -262,7 +281,8 @@ Halt는 급감속이며 전원을 유지합니다. 12는 조회·세션 오류�
 
 list는 장비에 연결하지 않고 목록을 읽습니다. save는 `POSITION_NAME`에 현재 관절 좌표를 저장합니다.
 같은 이름은 갱신하고 다른 위치·메타데이터는 유지합니다. 손상된 JSON을 빈 데이터로 덮어쓰지 않습니다.
-move는 파일과 축 개수를 검증한 뒤 공통 초기화·필요 시 Home·이동·완료 대기를 수행합니다.
+move는 `POSITION_NAME`(기본값 `None`)에 저장 위치 이름을 입력해야 실행됩니다.
+파일과 축 개수를 검증한 뒤 공통 초기화·필요 시 Home·이동·완료 대기를 수행합니다.
 그리퍼 자동 열기는 없지만, 저장 관절 좌표에 그리퍼 축이 포함되면 그 축도 이동 대상입니다.
 장비·축 구성이 다른 좌표를 재사용하지 마세요.
 
@@ -276,5 +296,5 @@ free → 수동 조작 → 13 save → restore → 13 move 순서로 사용할 �
 
 ## 검증 범위
 
-예제 자동 검증은 루프백 TCP 모의 서버로 수행합니다. 실장비 동작·위치·힘 검증은 별도입니다.
-01~02의 기존 실장비 테스트 완료는 사용자 확인 기록이며, 이번 설정 파일 연동 변경은 실장비 재확인 대상입니다.
+예제 자동 검증은 루프백 TCP 모의 서버로 수행합니다. 실장비 동작·위치·힘은 아직 검증하지 않았습니다.
+자세한 내용은 [검증 기록](../docs/VALIDATION.md)을 참고하세요.

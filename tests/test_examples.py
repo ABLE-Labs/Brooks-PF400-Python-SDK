@@ -15,7 +15,7 @@ SCRIPTS = sorted(path.relative_to(EXAMPLES).as_posix() for path in EXAMPLES.glob
 
 
 def load_example(name, settings=None):
-    main = runpy.run_path(str(EXAMPLES / name), run_name="customer_example")["main"]
+    main = runpy.run_path(str(EXAMPLES / name), run_name="example")["main"]
     main.__globals__.update(settings or {})
     return main
 
@@ -36,6 +36,7 @@ def test_import_does_not_connect(monkeypatch, name):
 @pytest.mark.parametrize("name", [
     "04_joint_motion/04_joint_motion.py", "05_cartesian_motion/05_cartesian_motion.py", "06_single_axis/06_single_axis_motion.py",
     "10_coordinate_conversion/10_joint_to_cartesian.py", "10_coordinate_conversion/10_cartesian_to_joint.py",
+    "09_controller_teaching/09_locations_move.py", "13_teaching_positions/13_position_move.py",
 ])
 def test_unset_required_values_fail_before_connect(monkeypatch, name):
     def forbidden(*args, **kwargs):

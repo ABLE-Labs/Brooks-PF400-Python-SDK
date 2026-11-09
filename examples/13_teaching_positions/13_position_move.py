@@ -21,12 +21,14 @@ ROBOT_ID = 1
 PORT = 10100
 STATUS_PORT = 10000
 TIMEOUT = 10.0
-POSITION_NAME = "position_a"
+POSITION_NAME = None  # 13_positions_list.py로 확인한 저장 위치 이름. 예: "position_a"
 PROFILE_INDEX = 1
-MOTION_TIMEOUT = 120.0
+MOTION_TIMEOUT = 120.0  # 완료 대기 [s]. 타임아웃은 물리 정지가 아닙니다.
 
 
 def main():
+    if POSITION_NAME is None:
+        raise ValueError("POSITION_NAME에 저장된 위치 이름을 입력하세요.")
     target = load_position(JSON_FILE, POSITION_NAME)
     profiles = load_profiles(PROFILE_FILE)
     validate_profile(PROFILE_INDEX, profiles=profiles)

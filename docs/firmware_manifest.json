@@ -1,5 +1,5 @@
 {
-  "firmware_project": "Tcp_cmd_server_ablelabs",
+  "firmware_project": "PF400 TCP Command Server",
   "version": "Command Server 3.0D4 10-25-2024",
   "source_sha256": {
     "Cmd.gpl": "1d85d92c876b450689254798321bba1136920206fc3d7dbbbcb711f648895c3b",

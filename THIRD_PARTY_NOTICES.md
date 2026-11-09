@@ -1,7 +1,7 @@
 # Third-party notices
 
 Command documentation in generated Python docstrings, docs/API.md and the firmware
-manifest is derived from the customer-provided Brooks Automation / Precise
+manifest is derived from the Brooks Automation / Precise
 Automation TCP Command Server sources. Firmware source and binary libraries are
 not bundled in this SDK. This notice does not grant a license to the new SDK code.
 

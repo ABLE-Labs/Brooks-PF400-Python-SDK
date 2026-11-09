@@ -1,6 +1,6 @@
 """Regenerate explicit command wrappers and provenance from a firmware folder.
 
-Usage: python tools/generate_api.py --firmware /path/to/Tcp_cmd_server_ablelabs
+Usage: python tools/generate_api.py --firmware /path/to/tcs_firmware_project
 Only this generator reads firmware. Neither building nor importing the SDK needs it.
 """
 
@@ -52,7 +52,7 @@ def main():
             {**spec, **found[spec["command"]], "verification": "mock TCP only; hardware not tested"}
         )
     manifest = dict(
-        firmware_project="Tcp_cmd_server_ablelabs",
+        firmware_project="PF400 TCP Command Server",
         version="Command Server 3.0D4 10-25-2024",
         source_sha256=files,
         commands=entries,

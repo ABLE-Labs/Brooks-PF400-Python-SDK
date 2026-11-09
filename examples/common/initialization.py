@@ -41,7 +41,7 @@ def validate_profile(index, *, registered=True, profiles=None):
     if type(index) is not int or index < 1:
         raise ValueError("PROFILE_INDEX는 1 이상의 정수여야 합니다.")
     if index > 20:
-        raise ValueError("PROFILE_INDEX는 제공된 TCS의 1~20 범위여야 합니다.")
+        raise ValueError("PROFILE_INDEX는 지원 대상 TCS의 1~20 범위여야 합니다.")
     if registered:
         data = load_profiles() if profiles is None else profiles
         if str(index) not in data["profiles"]:

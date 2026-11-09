@@ -20,7 +20,7 @@ def module():
     return runpy.run_path(str(path), run_name="teaching_example")
 
 
-def test_delivery_json_has_valid_position_structure():
+def test_bundled_json_has_valid_position_structure():
     path = EXAMPLES / "config/teaching_positions.json"
     assert path.exists(), "Teaching JSON has not been created"
     assert isinstance(module()["read_positions"](path)["positions"], dict)
@@ -30,11 +30,11 @@ def test_save_preserves_other_positions_and_metadata(tmp_path):
     api = module()
     path = tmp_path / "positions.json"
     path.write_text(
-        json.dumps({"description": "customer", "positions": {"old": {"joints": [1, 2, 3]}}}), encoding="utf-8"
+        json.dumps({"description": "sample", "positions": {"old": {"joints": [1, 2, 3]}}}), encoding="utf-8"
     )
     api["save_position"](path, "new", [4.0, 5.0, 6.0])
     data = json.loads(path.read_text(encoding="utf-8"))
-    assert data["description"] == "customer"
+    assert data["description"] == "sample"
     assert data["positions"]["old"]["joints"] == [1, 2, 3]
     assert api["load_position"](path, "new") == [4.0, 5.0, 6.0]
     assert list(tmp_path.iterdir()) == [path]
@@ -134,6 +134,7 @@ def test_axis_count_mismatch_does_not_send_motion(devices, tmp_path):  # noqa: F
                 "PORT": motion.port,
                 "STATUS_PORT": status.port,
                 "JSON_FILE": path,
+                "POSITION_NAME": "position_a",
             },
         )
     assert motion.received == SESSION_MOTION + ["WhereJ"]
