@@ -125,7 +125,7 @@ with PF400("192.168.0.1", timeout=5) as robot:
 Connecting only opens the TCP sockets. It does not send power, homing or motion commands.
 
 > [!WARNING]
-> - `halt()` is a rapid deceleration command. **It is not a substitute for a hardware emergency stop.**
+> - Always stop with `halt(channel="status")`. `Halt` is a rapid deceleration command and **is not a substitute for a hardware emergency stop.**
 > - Disconnecting, cancelling a task or raising a Python exception does not stop physical motion.
 > - The SDK never retries a command. After a timeout, check the robot before reconnecting.
 > - The firmware accepts one TCP connection per port. Do not connect multiple clients to the same robot.

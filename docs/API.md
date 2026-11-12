@@ -4,6 +4,7 @@
 Default channel: motion, except `reset` which defaults to status. `connect()` sends no commands.
 Before per-robot calls on status, explicitly use `select_robot(robot_id, channel="status")`.
 Status-port Reset requires robot selection 0; Halt requires the intended robot selection.
+Always send Halt with `channel="status"`; on motion it waits behind any command still awaiting its reply.
 
 Numeric units, robot/axis availability and controller index limits remain firmware-defined.
 Sequences are expanded in wire order. Omitted trailing arguments remain omitted; gaps are rejected.

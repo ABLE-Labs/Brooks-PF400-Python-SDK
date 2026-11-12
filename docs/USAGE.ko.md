@@ -59,7 +59,10 @@ with PF400("192.168.0.1") as robot:
     # robot.halt(channel="status")  # 응답을 기다리는 motion 채널과 독립적으로 전송
 ```
 
-- `halt()`를 기본 motion 채널로 호출하면 앞 명령의 응답이 올 때까지 기다릴 수 있습니다.
+- `halt()`는 항상 `channel="status"`로 보내세요. 기본 채널(motion)로 보내면 `wait_for_eom()`처럼 진행 중인 명령이
+  끝난 뒤에야 처리됩니다.
+- status 채널의 `Halt`는 Attach 없이 동작합니다. `Halt`로 멈춰도 대기 중이던 `wait_for_eom()`은 성공(`0`)으로
+  응답하므로, 목표에 도달했는지는 `where_j()`로 확인하세요.
 - `Halt`는 급감속 명령이며 전원은 유지됩니다. **하드웨어 비상정지를 대신할 수 없습니다.**
 - `Reset`은 로봇 스레드를 재시작합니다. 펌웨어는 상태 채널에 로봇 `0`이 선택된 경우에만 허용하므로,
   다른 로봇을 선택했다면 먼저 `select_robot(0, channel="status")`를 호출하세요.

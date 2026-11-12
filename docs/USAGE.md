@@ -61,7 +61,10 @@ with PF400("192.168.0.1") as robot:
     # robot.halt(channel="status")  # sent independently of a motion channel that is waiting
 ```
 
-- Calling `halt()` on the default motion channel may wait until the previous command replies.
+- Always send `halt()` with `channel="status"`. On the default motion channel it is processed only after a command
+  still in progress, such as `wait_for_eom()`, has finished.
+- `Halt` on the status channel works without Attach. A pending `wait_for_eom()` still replies with success (`0`)
+  after a `Halt`, so check `where_j()` to confirm whether the target was reached.
 - `Halt` is a rapid deceleration command and keeps power on. **It is not a substitute for a hardware emergency stop.**
 - `Reset` restarts a robot thread. The firmware accepts it only when the status channel has robot `0` selected;
   call `select_robot(0, channel="status")` first if another robot was selected.
